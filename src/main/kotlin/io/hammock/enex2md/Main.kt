@@ -9,6 +9,18 @@ import javax.xml.parsers.SAXParserFactory
  */
 @Suppress("UnusedMainParameter")
 fun main(args: Array<String>) {
+    if (args.isEmpty()) {
+        println("need filename!")
+        System.exit(-1)
+    }
+    val fileName = args[0]
+    val file = if (fileName.startsWith("/") || fileName.startsWith("\\")) {
+        fileName
+    } else {
+        val workdir = System.getProperty("user.dir")
+        "$workdir/$fileName"
+    }
+    Parser().parse(file)
 //    com.sun.org.apache.xml.internal.security.Init.init();
     // either export by name, or all enex files in the current directory
 //    Parser().parse("/Users/mark/Downloads/Masterplan.enex")
@@ -17,7 +29,7 @@ fun main(args: Array<String>) {
 //    Parser().parse("/Users/mark/Downloads/Umstellung auf Linux.enex")
 //    Parser().parse("/Users/mark/Downloads/HOWTOs.enex")
 //    Parser().parse("/Users/mark/Downloads/TODO 2019.enex")
-    Parser().parse("/Users/mark/Downloads/privat.enex")
+//    Parser().parse("/Users/mark/Downloads/privat.enex")
 //    Parser().parse("/Users/mark/Downloads/MyNotes.enex")
 //    Parser().parse("/Users/mark/Downloads/Impfausweis.enex")
 //    Parser().parse("/Users/mark/Downloads/Eigentumswohnungen.enex")

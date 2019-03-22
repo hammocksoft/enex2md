@@ -3,25 +3,28 @@
 Evernote is a great tool for managing your notes, but it has one mayor disadvantage:
  it stores all your data in an unencrypted form so you completly loose control.
  
-When looking for an alternative solution, I came accross this great tool called [http://elephant.mine.nu/]["Elephant"]. 
+When looking for an alternative solution, I came accross this great piece of software called [http://elephant.mine.nu/]["Elephant"]. 
 
 It's obviously inspired by Evernote and stores all notes in a clean directory structure 
 as single files in Markdown (with embedded files in a subdirectory). 
-Markdown itself is a very simple and clean text format, perfect for notes or shorter documents.
 
-Furthermore, it's open source and written in Java - a language that I've been using 
+Furthermore, Elephant is open source and written in Java - a language that I've been using 
 for almost 20 years, so I feel confident that I can fix any issues in case the program stops 
 working for whatever reason.
 
+Markdown itself is a very simple and clean text format, perfect for notes or shorter documents.
+
 But how to get from Evernote to Markdown?
 
-In my case, we're talking 425 notes with lost of embedded images and pdfs so copy-pasting 
+In my case, we're talking 425 notes with lots of embedded images and pdfs so copy-pasting 
 the notes into Elephant is not an option.
 
-I found 2 tools that claim to to the conversion, but they both seemed quite immature, 
+I found 2 tools that claim to be able to do the conversion, but they both seemed quite immature, 
 simply exporting the HTML which Evernote uses internally as is. Not really helpful.
  
 So, beeing a coder I started what coders do: write my own tool. 
+ 
+Please note that this is still work in progress! 
  
 ## Features
  
@@ -35,6 +38,7 @@ So, beeing a coder I started what coders do: write my own tool.
 
 ## TODO
 
+* improve line break handling
 * strikethrough
 * convert text sizes to different title sizes based on default size
 * support for multiple notes with the same name (add counter to the file name)
@@ -45,7 +49,7 @@ So, beeing a coder I started what coders do: write my own tool.
 
 ## How to use
 
-1. Export your notes from Evernote
+### 1. Export your notes from Evernote
 
 Select all the notes in one notebook by selecting them and the clicking File -> Export Note. 
 
@@ -54,7 +58,17 @@ Use the name of the notebook as the file name. All the notes will be saved in a 
 If you export all of your notes (across all notebooks) at ones, you'll end up with all 
 of them in a single directory.
   
-2. Convert  
+### 2. Convert  
+
+2.1. (Build enex2md)
+
+Checkout this repository, change to the directory and run:
+
+./gradlew shadowJar
+
+This will generate a file "enex2md.jar" in the build subdirectory 
+
+2.2. Running enex2md
  
 Open a Terminal window, change to the directory where your exported file is located and run 
 
@@ -64,13 +78,15 @@ You will get a directory with the same name as your exported file (minus the .en
 all your notes in Markdown
 
 
-3. Copy your exported files/folders into the Elephant directory
+### 3. Copy your exported files/folders into the Elephant directory
 
 ## Store your notes in the Cloud - encrypted.
 
-4.1 Use Sync.com (End-to-end encrypted)
+### 1. Use Sync.com (End-to-end encrypted)
 
-4.2 Use encfs + Dropbox
-Referral Link: You get 500 MB of extra space, I get 1 GB.
+### 2. Use encfs + Dropbox
+
+Referral Link: You get 500 MB of extra space, I get 1 GB :-)
+
 https://db.tt/Md1QDQes
 
